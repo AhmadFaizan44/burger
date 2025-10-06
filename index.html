@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Burger Bistro</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container flex between center-y">
+      <h1 class="brand">🍔 Burger Bistro</h1>
+      <nav>
+        <a href="#menu">Menu</a>
+        <a href="#deals">Deals</a>
+        <a href="#cart">Cart</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="hero" class="hero">
+      <div class="hero-card">
+        <h2>Build your perfect burger.</h2>
+        <p>Fresh buns, juicy patties, crispy fries — and sweet deals.</p>
+        <a class="btn" href="#menu">Order now</a>
+      </div>
+    </section>
+
+    <section id="menu" class="section">
+      <h2>Menu</h2>
+      <div class="grid">
+        <!-- Burgers -->
+        <div class="card">
+          <h3>Classic Burger</h3>
+          <p>Beef patty, lettuce, tomato, pickles.</p>
+          <div class="price">$6.99</div>
+          <button class="btn add-btn" data-id="burger_classic" data-name="Classic Burger" data-price="6.99">Add</button>
+        </div>
+        <div class="card">
+          <h3>Cheese Burger</h3>
+          <p>Beef patty, cheddar cheese, all the fixings.</p>
+          <div class="price">$7.99</div>
+          <button class="btn add-btn" data-id="burger_cheese" data-name="Cheese Burger" data-price="7.99">Add</button>
+        </div>
+        <div class="card">
+          <h3>Chicken Burger</h3>
+          <p>Crispy chicken, mayo, lettuce.</p>
+          <div class="price">$7.49</div>
+          <button class="btn add-btn" data-id="burger_chicken" data-name="Chicken Burger" data-price="7.49">Add</button>
+        </div>
+
+        <!-- Sides -->
+        <div class="card">
+          <h3>Fries (Small)</h3>
+          <p>Golden and crispy.</p>
+          <div class="price">$2.49</div>
+          <button class="btn add-btn" data-id="fries_small" data-name="Fries (Small)" data-price="2.49">Add</button>
+        </div>
+        <div class="card">
+          <h3>Fries (Medium)</h3>
+          <p>Shareable size.</p>
+          <div class="price">$3.49</div>
+          <button class="btn add-btn" data-id="fries_medium" data-name="Fries (Medium)" data-price="3.49">Add</button>
+        </div>
+        <div class="card">
+          <h3>Fries (Large)</h3>
+          <p>For the hungry squad.</p>
+          <div class="price">$4.49</div>
+          <button class="btn add-btn" data-id="fries_large" data-name="Fries (Large)" data-price="4.49">Add</button>
+        </div>
+
+        <!-- Drinks -->
+        <div class="card">
+          <h3>Soda (Small)</h3>
+          <p>Cola, Lemon, Orange.</p>
+          <div class="price">$1.49</div>
+          <button class="btn add-btn" data-id="soda_small" data-name="Soda (Small)" data-price="1.49">Add</button>
+        </div>
+        <div class="card">
+          <h3>Soda (Large)</h3>
+          <p>More fizz, more fun.</p>
+          <div class="price">$2.49</div>
+          <button class="btn add-btn" data-id="soda_large" data-name="Soda (Large)" data-price="2.49">Add</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="deals" class="section deals">
+      <h2>Deals</h2>
+      <ul class="deal-list">
+        <li><strong>COMBO10</strong> — 10% off your whole cart.</li>
+        <li><strong>FREESODA</strong> — Adds a free small soda (max 1).</li>
+        <li><strong>FRIESUP</strong> — Upgrade one fries to Large at Medium price.</li>
+      </ul>
+    </section>
+
+    <section id="cart" class="section cart">
+      <h2>Your Cart</h2>
+      <div id="cart-items" class="cart-items"></div>
+
+      <div class="cart-summary">
+        <div class="row"><span>Subtotal</span><strong id="subtotal">$0.00</strong></div>
+        <div class="row"><span>Tax (8%)</span><strong id="tax">$0.00</strong></div>
+        <div class="row"><span>Discount</span><strong id="discount">-$0.00</strong></div>
+        <div class="row total"><span>Total</span><strong id="total">$0.00</strong></div>
+      </div>
+
+      <div class="checkout">
+        <h3>Checkout</h3>
+        <form id="checkout-form" action="order.php" method="POST">
+          <div class="form-grid">
+            <label>
+              Name
+              <input type="text" name="customer_name" required />
+            </label>
+            <label>
+              Phone
+              <input type="tel" name="customer_phone" required />
+            </label>
+            <label class="full">
+              Address
+              <input type="text" name="customer_address" required />
+            </label>
+            <label>
+              Deal Code (optional)
+              <input type="text" id="deal-code" name="deal_code" placeholder="COMBO10 / FREESODA / FRIESUP" />
+            </label>
+          </div>
+
+          <input type="hidden" name="cart_json" id="cart-json" />
+          <button type="submit" class="btn primary">Place Order</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Burger Bistro. Built with ❤️.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
